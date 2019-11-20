@@ -16,11 +16,6 @@ def health():
 def alerts():
     data = json.loads(request.get_data())
     logging.debug("Got data: %s", data)
-#    for i in data['alerts']:
-#        if i['status'] == "firing":
-#            msg = "firing"
-#        if i['status'] == "resolved":
-#            print("resolved")
     instance = data['alerts'][0]['labels']['instance']
     status = data['alerts'][0]['status']
     if status == "firing":
