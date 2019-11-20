@@ -22,3 +22,6 @@ receivers:
     - url: "http://alertcat/alerts"
 
 ```
+
+## Screenshot
+<img src="https://imgur.com/m6kGzXQ">
