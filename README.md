@@ -24,4 +24,4 @@ receivers:
 ```
 
 ## Screenshot
-<img src="https://imgur.com/m6kGzXQ">
+<img src="https://i.ibb.co/kHQJ76c/m6k-Gz-XQ-Imgur.png">
