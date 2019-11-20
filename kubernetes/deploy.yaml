@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertcat
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: alertcat
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertcat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alertcat
+  template:
+    metadata:
+      labels:
+        app: alertcat
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: alertcat
+        image: ivanovua/alertcat:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "128Mi"
+            #cpu: "250m"
+          limits:
+            memory: "256Mi"
+            #cpu: "500m"
+        env:
+        - name: TOKEN_URL
+          value: 'https://chat.googleapis.com/v1/spaces/SOME-TOKEN-HERE'
+#        livenessProbe:
+#          httpGet:
+#            path: /health
+#            port: 3000
+#          periodSeconds: 15
